@@ -1,1 +1,137 @@
 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+
+    cout << "Enter size of matrix 1 : ";
+    cin >> r1 >> c1;
+
+    int A[r1][c1];
+
+    cout << "Enter size of matrix 2 : ";
+    cin >> r2 >> c2;
+
+    int B[r2][c2];
+
+    cout << "Enter elements in matrix 1 : " << endl;
+    for(int i = 0; i < r1; i++) {
+        for(int j = 0; j < c1; j++) {
+            cin >> A[i][j];
+        }
+    }
+
+    cout << "Enter elements in matrix 2 : " << endl;
+    for(int i = 0; i < r2; i++) {
+        for(int j = 0; j < c2; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    cout << "---CHOICES---" << endl;
+    cout << "1. Printing elements of matrices" << endl;
+    cout << "2. Transpose of matrices" << endl;
+    cout << "3. Addition of matrices" << endl;
+    cout << "4. Subtraction of matrices" << endl;
+    cout << "5. Multiplication of matrices" << endl;
+
+    cout << "Enter no. of choice : ";
+    int x;
+    cin >> x;
+
+    switch(x) {
+        case 1:
+            cout << "Printing elements of matrix 1 :" << endl;
+            for(int i = 0; i < r1; i++) {
+                for(int j = 0; j < c1; j++) {
+                    cout << A[i][j] << " ";
+                }
+                cout << endl;
+            }
+
+            cout << "Printing elements of matrix 2 :" << endl;
+            for(int i = 0; i < r2; i++) {
+                for(int j = 0; j < c2; j++) {
+                    cout << B[i][j] << " ";
+                }
+                cout << endl;
+            }
+            break;
+
+        case 2:
+            cout << "Transpose of matrix 1 :" << endl;
+            for(int i = 0; i < c1; i++) {
+                for(int j = 0; j < r1; j++) {
+                    cout << A[j][i] << " ";
+                }
+                cout << endl;
+            }
+
+            cout << "Transpose of matrix 2 :" << endl;
+            for(int i = 0; i < c2; i++) {
+                for(int j = 0; j < r2; j++) {
+                    cout << B[j][i] << " ";
+                }
+                cout << endl;
+            }
+            break;
+
+        case 3:
+            if(r1 == r2 && c1 == c2) {
+                cout << "Addition of matrices :" << endl;
+                int C[r1][c1];
+                for(int i = 0; i < r1; i++) {
+                    for(int j = 0; j < c1; j++) {
+                        C[i][j] = A[i][j] + B[i][j];
+                        cout << C[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+            } else {
+                cout << "Addition not possible!" << endl;
+            }
+            break;
+
+        case 4:
+            if(r1 == r2 && c1 == c2) {
+                cout << "Subtraction of matrices :" << endl;
+                int D[r1][c1];
+                for(int i = 0; i < r1; i++) {
+                    for(int j = 0; j < c1; j++) {
+                        D[i][j] = A[i][j] - B[i][j];
+                        cout << D[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+            } else {
+                cout << "Subtraction not possible!" << endl;
+            }
+            break;
+
+        case 5:
+            if(c1 == r2) {
+                cout << "Multiplication of matrices :" << endl;
+                int M[r1][c2];
+
+                for(int i = 0; i < r1; i++) {
+                    for(int j = 0; j < c2; j++) {
+                        M[i][j] = 0;
+                        for(int k = 0; k < c1; k++) {
+                            M[i][j] += A[i][k] * B[k][j];
+                        }
+                        cout << M[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+            } else {
+                cout << "Multiplication not possible!" << endl;
+            }
+            break;
+
+        default:
+            cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
